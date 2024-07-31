@@ -2,16 +2,22 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-pizzas = [['Маргарита', 'Томатный соус, моцарелла, свежие помидоры, базилик, оливковое масло.', '120 грн'],
-          ['Пепперони', 'Томатный соус, моцарелла, пепперони.', '180 гривен'],
-          ['Гавайская','Томатный соус, моцарелла, ветчина, ананас.','200 гривен']]
+pizzas = [{'name': 'Маргарита',
+           'made': 'Томатный соус, моцарелла, свежие помидоры, базилик, оливковое масло.',
+           'price': '120 грн'},
+
+          {'name': 'Пепперони',
+           'made': 'Томатный соус, моцарелла, пепперони.',
+           'price': '220 грн'},
+
+          {'name': 'Гавайская',
+           'made': 'Томатный соус, моцарелла, ветчина, ананас.',
+           'price': '200 грн'}]
+
 
 @app.route('/pizza/')
 def pizza():
-    return render_template('index2.html',
-                           name1=pizzas[0][0], made1=pizzas[0][1], price1=pizzas[0][2],
-                           name2=pizzas[1][0], made2=pizzas[1][1], price2=pizzas[1][2],
-                           name3=pizzas[2][0], made3=pizzas[2][1], price3=pizzas[2][2])
+    return render_template('index2.html', pizzas=pizzas)
 
 
-app.run()
+app.run(debug=True)

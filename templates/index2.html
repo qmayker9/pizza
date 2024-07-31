@@ -39,21 +39,15 @@ tr:nth-child(even) {
     <th>Состав</th>
     <th>Цена</th>
   </tr>
+  {% for pizza in pizzas | sort(attribute="price", reverse = true) %}
   <tr>
-    <td>{{name1}}</td>
-    <td>{{made1}}</td>
-    <td>{{price1}}</td>
+      <td>{{pizza.name}}</td>
+      <td>{{pizza.made}}</td>
+      <td>{{pizza.price}}</td>
   </tr>
-  <tr>
-    <td>{{name2}}</td>
-    <td>{{made2}}</td>
-    <td>{{price2}}</td>
-  </tr>
-  <tr>
-    <td>{{name3}}</td>
-    <td>{{made3}}</td>
-    <td>{{price3}}</td>
-  </tr>
+    {%endfor%}
+
+
 </table>
 
 </body>
